@@ -64,7 +64,7 @@ func update(dir string) {
 		return
 	}
 
-	l := task.NewList(filepath.Join(os.Getenv("HOME"), "/todo/git/", filepath.Base(dir)))
+	l := task.OpenList(filepath.Join(os.Getenv("HOME"), "/todo/git/", filepath.Base(dir)))
 
 	const numField = 6
 	out, err := exec.Command("git", "log", "--topo-order", "--format=format:%H%x00%B%x00%s%x00%ct%x00%an <%ae>%x00%cn <%ce>%x00", "--").CombinedOutput()
