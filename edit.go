@@ -234,11 +234,11 @@ func bulkEditTasks(l *task.List, tasks []*task.Task) {
 	if err != nil {
 		errText := strings.Replace(err.Error(), "\n", "\t\n", -1)
 		if len(ids) > 0 {
-			log.Fatal("updated %d issue%s with errors:\n\t%v", len(ids), suffix(len(ids)), errText)
+			log.Fatalf("updated %d issue%s with errors:\n\t%v", len(ids), suffix(len(ids)), errText)
 		}
 		log.Fatal(errText)
 	}
-	log.Printf("updated %d task%s", len(ids), suffix)
+	log.Printf("updated %d task%s", len(ids), suffix(len(ids)))
 }
 
 func bulkEditStart(tasks []*task.Task) (*task.Task, []byte) {
